@@ -1,7 +1,5 @@
 # Blue-Green Deployment 101
 
-# Blue-Green Deployment Project
-
 This project demonstrates a simple blue-green deployment setup using Docker and Docker Compose. It includes two application versions (`blue` and `green`) and an Nginx reverse proxy to switch between them. The project also includes a script to handle the deployment process.
 Enjoy learning about blue-green deployment!
 
@@ -36,8 +34,8 @@ Enjoy learning about blue-green deployment!
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/blue-green-deployment.git
-    cd blue-green-deployment
+    git clone https://github.com/yourusername/blue-green-deployment-101.git
+    cd blue-green-deployment-101
     ```
 
 2. **Build and run the Docker containers**:
