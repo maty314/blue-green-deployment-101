@@ -1,0 +1,38 @@
+# This Docker Compose file sets up three services: blue, green, and nginx. 
+# It maps ports for blue and green services and configures the nginx service as a reverse proxy. 
+# The services are connected via a custom bridge network.
+
+version: '3'
+
+services:
+  blue:
+    build:
+      context: ./blue  # Path to the Dockerfile and app for the blue service
+    ports:
+      - "8001:5000"  # Map port 8001 on localhost to port 5000 on the blue service
+    networks:
+      - network  # Connect the blue service to the custom network
+
+  green:
+    build:
+      context: ./green  # Path to the Dockerfile and app for the green service
+    ports:
+      - "8002:5000"  # Map port 8002 on localhost to port 5000 on the green service
+    networks:
+      - network  # Connect the green service to the custom network
+
+  nginx:
+    build:
+      context: ./nginx  # Path to the Dockerfile and configuration for the nginx service
+    ports:
+      - "80:80"  # Map port 80 on localhost to port 80 on the nginx service
+    networks:
+      - network  # Connect the nginx service to the custom network
+    depends_on:
+      - blue  # Ensure the blue service starts before nginx
+      - green  # Ensure the green service starts before nginx
+
+networks:
+  network:
+    driver: bridge  # Use the bridge driver to create a custom network
+
